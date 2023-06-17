@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CategoryData } from "./CategoryData";
 
@@ -10,7 +10,7 @@ export type CategoryType = {
 };
 
 export function TableCategories() {
-  //const [count, setCount] = useState(0)
+  const navigate = useNavigate();
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const token = window.localStorage.getItem("token");
 
@@ -34,6 +34,10 @@ export function TableCategories() {
     }
   }
 
+  function handleLogout() {
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
   // async function getCategories() {
   //   const response = await fetch("https://pokeapi.co/api/v2/pokemon");
   //   const data = await response.json();
@@ -67,7 +71,7 @@ export function TableCategories() {
         <tbody>
           {categories.map((category) => (
             <CategoryData
-              key={category.name}
+              key={category.id}
               id={category.id}
               name={category.name}
               isActive={category.is_active}
@@ -77,9 +81,12 @@ export function TableCategories() {
         </tbody>
       </table>
 
-      <p>
+      {/* <p>
         <Link to="/login">LogOut</Link>
-      </p>
+      </p> */}
+      <button type="button" onClick={handleLogout}>
+        LogOut
+      </button>
     </div>
   );
 }
