@@ -17,9 +17,6 @@ export function AddCategory() {
   const { register, handleSubmit } = useForm<IFormInput>();
 
   async function onSubmit(data: IFormInput) {
-    console.log(data);
-    console.log(data.status === "Active" ? true : false);
-
     const token = window.localStorage.getItem("token");
 
     try {

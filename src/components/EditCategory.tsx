@@ -31,7 +31,6 @@ export function EditCategory() {
           },
         }
       );
-      console.log("data", data);
 
       setValue("name", data.data.name);
 
@@ -48,9 +47,6 @@ export function EditCategory() {
   }
 
   async function onSubmit(data: IFormInput) {
-    console.log(data);
-    console.log(data.status === "Active" ? true : false);
-
     const token = window.localStorage.getItem("token");
 
     try {
