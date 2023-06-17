@@ -4,8 +4,10 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
-import { Home } from "./components/Home";
+import { TableCategories } from "./components/TableCategories/TableCategories";
 import { NotFound } from "./components/NotFound";
+import { AddCategory } from "./components/AddCategory";
+import { EditCategory } from "./components/EditCategory";
 
 function App() {
   // return (
@@ -20,7 +22,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<TableCategories />} />
+        <Route path="/add" element={<AddCategory />} />
+        <Route path="/edit/:id" element={<EditCategory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
